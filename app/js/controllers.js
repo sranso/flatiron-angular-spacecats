@@ -10,10 +10,12 @@ var spacecatApp = angular.module('spacecatApp', []);
 spacecatApp.controller('CatListCtrl', function($scope, $http){
   // only attempt to bind data if the get request is successful
   $http.get("cats/cats.json").success( function(data){
+    // here we are making the resources
+    // .cats has to match ng-repeat
+    // this has to point to some kind of array
     $scope.cats = data;
   });
-  // here we are making the resources
-  // .cats has to match ng-repeat
-  // this has to point to some kind of array
+  
+  $scope.orderProp = "name";
   
 });
