@@ -15,11 +15,17 @@
       <img id="sagan" src="img/sagan.png"/>
       <div class="jumbo">  
         <h1>Intergalactic Space Cat Registry</h1>
+        <input type="text" ng-model="query" id="search"/>
+        <select ng-model="orderProp">
+          <option value="name">Alphabetical</option>
+          <!-- value name needs to match an attribute on object -->
+          <option value="-planets">Planets Visited</option>
+        </select>
       </div>
       <div class="cat-container container">
-        <h2> NO CATS YET :((( </h2>
         <ul>
-          <li ng-repeat="cat in cats">  <!--  -->
+          <!-- the order here is important -->
+          <li ng-repeat="cat in cats | filter: query | orderBy: orderProp">
             <img ng-src="img/spacecats/{{cat.name}}.jpg">
             <div class="info">
               <a href="#/cats/{{cat.id}}">
